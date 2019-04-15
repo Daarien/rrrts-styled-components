@@ -1,4 +1,4 @@
-import React, { Context, ReactNode } from 'react';
+import React, { createContext, Context, ReactNode } from 'react';
 
 type func<T> = (name: T) => void;
 
@@ -16,11 +16,11 @@ type Theme = {
 	theme: Record<string, any>;
 }
 
-export const ThemeContext: Context<IThemeContext> = React.createContext({
+export const ThemeContext: Context<IThemeContext> = createContext({
 	theme: {} as Theme
 });
 
 export const ThemeProvider = (props: ProviderProps) => {
 	const { name, theme, changeTheme, children } = props;
 	return <ThemeContext.Provider value={{ name, theme, changeTheme }}>{children}</ThemeContext.Provider>;
-};
+}
